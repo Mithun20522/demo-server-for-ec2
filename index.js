@@ -1,8 +1,13 @@
 import express, { json } from "express";
 import cookieParser from "cookie-parser";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const PORT = process.env.PORT;
+
 const app = express();
+app.use(json());
 app.use(cookieParser());
 
 app.get("/user", (req, res) => {
@@ -10,5 +15,5 @@ app.get("/user", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log("server running on port: 8080");
+  console.log(`server running on port: ${PORT}`);
 });
